@@ -36,8 +36,7 @@ class Geonames(object):
         return len(self.container)
 
     def load(self, path):
-        file_name = os.path.basename(path)
-        with open(path) as f:
+        with open(path, 'rb') as f:
             fieldnames = [
                 'geonameid',
                 'name',
@@ -63,7 +62,7 @@ class Geonames(object):
             reader = unicodecsv.DictReader(f, fieldnames=fieldnames,
                                            dialect='excel-tab',
                                            encoding='utf-8')
-
+            
             for row in reader:
                 # Main Lookup
                 lookup_f_code = feature_code.get(row['feature_code'])
@@ -250,7 +249,7 @@ class Geonames(object):
                 sink.write(feature)
 
 if __name__ == '__main__':
-    geonames = Geonames('C:\Users\GEO_Admin\Downloads\JM\JM.txt')
-    geonames.export_csv('C:\Users\GEO_Admin\Downloads\JM\JM')
-    print geonames
+    geonames = Geonames("allCountries.txt")
+    geonames.export_csv("world")
+    print(geonames)
 

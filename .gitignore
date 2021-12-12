@@ -2,6 +2,10 @@
 ## Python
 #############
 
+# Geonames Files
+allCountries.txt
+*.csv
+
 *.py[co]
 
 # Packages
